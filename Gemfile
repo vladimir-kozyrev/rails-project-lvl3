@@ -56,3 +56,8 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'pg', '~> 1.3'
+
+gem 'slim_lint', '~> 0.22.1'
+
+gem 'rubocop', '~> 1.26'
+gem 'rubocop-rails', '~> 2.13'
