@@ -32,6 +32,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
+  gem 'faker'
 end
 
 group :development do
@@ -60,8 +61,8 @@ gem 'pg', '~> 1.3'
 
 gem 'slim_lint', '~> 0.22.1'
 
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 gem 'rollbar'
 gem 'rubocop', '~> 1.26'
 gem 'rubocop-rails', '~> 2.13'
-gem 'omniauth-github'
-gem 'omniauth-rails_csrf_protection'
