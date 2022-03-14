@@ -1,4 +1,5 @@
 setup:
+	cp .env.example .env
 	bin/setup
 	bin/rails db:seed
 
