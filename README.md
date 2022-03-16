@@ -7,9 +7,8 @@ Hexlet tests and linter status
 
 TODO
 ====
-```
-rails d controller home index
-```
+* Make navbar pretty using bootstrap
+* Fix the way bulletins are listed at `bulletins#index`
 
 Heroku URI
 ==========
