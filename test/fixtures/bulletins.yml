@@ -3,11 +3,11 @@
 one:
   user: one
   category: one
-  title: MyString
-  description: MyText
+  title: Cats are good
+  description: Cats are good for your mental health
 
 two:
   user: two
   category: two
-  title: MyString
-  description: MyText
+  title: Dogs are fine animals
+  description: Adopting a dog is a good deed

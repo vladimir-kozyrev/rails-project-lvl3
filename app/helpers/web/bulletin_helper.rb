@@ -1,0 +1,2 @@
+module Web::BulletinHelper
+end
