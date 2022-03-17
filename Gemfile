@@ -33,6 +33,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'faker'
+  gem 'minitest-power_assert'
 end
 
 group :development do
@@ -58,9 +59,7 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'pg', '~> 1.3'
-
 gem 'slim_lint', '~> 0.22.1'
-
 gem 'active_storage_validations'
 gem 'file_validators'
 gem 'image_processing'

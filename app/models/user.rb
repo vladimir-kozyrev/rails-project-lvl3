@@ -3,7 +3,7 @@
 class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
-  validates :admin, presence: true
+  validates :admin, inclusion: [true, false]
   has_many :bulletins
 
   def self.find_or_create_from_auth(auth)
