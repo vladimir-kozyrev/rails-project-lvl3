@@ -1,0 +1,6 @@
+en:
+  layouts:
+    application:
+      title: 'Bulletins'
+    nav:
+      sign_in: 'Sign in'
