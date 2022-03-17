@@ -7,7 +7,8 @@ Hexlet tests and linter status
 
 TODO
 ====
-* Specify locales in the rails config
+* Write tests for BulletinsController
+* Write tests for User model
 
 Heroku URI
 ==========
