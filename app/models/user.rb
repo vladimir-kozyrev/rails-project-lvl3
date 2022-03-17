@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
+  validates :admin, presence: true
   has_many :bulletins
 
   def self.find_or_create_from_auth(auth)
@@ -10,5 +11,9 @@ class User < ApplicationRecord
     user.name = auth['info']['name']
     user.save
     user
+  end
+
+  def admin?
+    admin
   end
 end

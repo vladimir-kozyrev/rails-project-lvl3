@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
+  user: admin
   category: one
   title: Cats are good
   description: Cats are good for your mental health
 
 two:
-  user: two
+  user: regular_user
   category: two
   title: Dogs are fine animals
   description: Adopting a dog is a good deed
