@@ -44,3 +44,6 @@ tags
 
 # gem 'dotenv-rails'
 .env
+
+# VSCode
+*.code-workspace
