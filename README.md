@@ -7,8 +7,7 @@ Hexlet tests and linter status
 
 TODO
 ====
-* Make navbar pretty using bootstrap
-* Fix the way bulletins are listed at `bulletins#index`
+* Specify locales in the rails config
 
 Heroku URI
 ==========

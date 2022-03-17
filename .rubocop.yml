@@ -8,6 +8,8 @@ AllCops:
     - '**/examples/**/*'
     - '**/bin/*'
     - '**/tmp/**/*'
+    - 'config/initializers/simple_form_bootstrap.rb'
+    - 'config/initializers/simple_form.rb'
 
 Style/Documentation:
   Enabled: false

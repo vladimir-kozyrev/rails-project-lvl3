@@ -61,11 +61,11 @@ gem 'pg', '~> 1.3'
 
 gem 'slim_lint', '~> 0.22.1'
 
+gem 'active_storage_validations'
+gem 'file_validators'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'rollbar'
 gem 'rubocop', '~> 1.26'
 gem 'rubocop-rails', '~> 2.13'
-gem 'active_storage_validations'
-gem 'file_validators'
 gem 'simple_form'
