@@ -4,5 +4,8 @@ ul.list-group.list-group-flush
       .col.col-md-6
         .row
           = bulletin.title
+        - if bulletin.image_attachment
+          .row
+            = image_tag bulletin.image.variant(resize_to_limit: [200, 100]), class: 'img-thumbnail mb-2'
         .row
           = bulletin.description
