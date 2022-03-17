@@ -1,3 +1,8 @@
-- @bulletins.each do |bulletin|
-  = bulletin.title
-  = bulletin.description
+ul.list-group.list-group-flush
+  - @bulletins.each do |bulletin|
+    .row.list-group-item
+      .col.col-md-6
+        .row
+          = bulletin.title
+        .row
+          = bulletin.description

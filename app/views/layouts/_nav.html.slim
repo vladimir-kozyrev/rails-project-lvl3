@@ -1,8 +1,7 @@
-nav.p-3.bg-dark.text-white
-  .d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start
-    = link_to root_path, class: 'd-flex align-items-center mb-2 mb-lg-0 \
-                                text-white text-decoration-none' do
-      i class='fas fa-home bi me-2'
-    ul.nav.col-12.col-lg-auto.me-lg-auto.mb-2.justify-content-center.mb-md-0
-        li
-          = link_to t('.sign_in'), '/auth/github', method: :post, class: 'nav-link px-2 text-white'
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  .container
+    = link_to 'Bulletins', root_path, class: 'navbar-brand'
+    .collapse.navbar-collapse#navbarColor01
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          = link_to t('.sign_in'), '/auth/github', method: :post, class: 'nav-link'

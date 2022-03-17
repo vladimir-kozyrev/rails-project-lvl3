@@ -10,15 +10,15 @@ html
                                          'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    header
+      = render 'layouts/nav'
+    - flash.each do |type, message|
+      - case type
+      - when 'notice'
+        p.alert.alert-primary.text-center
+          = message
+      - when 'alert'
+        p.alert.alert-danger.text-center
+          = message
     .container
-      header
-        = render 'layouts/nav'
-      - flash.each do |type, message|
-        - case type
-        - when 'notice'
-          p.alert.alert-primary.text-center
-            = message
-        - when 'alert'
-          p.alert.alert-danger.text-center
-            = message
       = yield
