@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
     scope 'admin', as: 'admin' do
       root 'bulletins#moderate'
+      get 'bulletins', to: 'bulletins#admin_index', as: :index
       resources :categories, only: %i[index new create edit update destroy]
-      resources :bulletins, only: :index
     end
   end
 end
