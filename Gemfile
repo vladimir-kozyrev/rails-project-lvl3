@@ -58,14 +58,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem 'pg', '~> 1.3'
-gem 'slim_lint', '~> 0.22.1'
 gem 'active_storage_validations'
 gem 'file_validators'
 gem 'image_processing'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+gem 'pg', '~> 1.3'
 gem 'rollbar'
 gem 'rubocop', '~> 1.26'
 gem 'rubocop-rails', '~> 2.13'
 gem 'simple_form'
+gem 'slim_lint', '~> 0.22.1'
