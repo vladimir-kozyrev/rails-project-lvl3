@@ -21,6 +21,9 @@ module Web
       end
     end
 
+    def moderate
+    end
+
     private
 
     def bulletin_params
