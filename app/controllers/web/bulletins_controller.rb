@@ -21,8 +21,7 @@ module Web
       end
     end
 
-    def moderate
-    end
+    def moderate; end
 
     private
 

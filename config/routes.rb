@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     post 'auth/:provider', to: 'auth#request', as: :auth_request
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
 
-    resources :bulletins, only: [:index, :new, :create]
+    resources :bulletins, only: %i[index new create]
 
     scope 'admin', as: 'admin' do
       root 'bulletins#moderate'
-      resources :categories, only: [:index, :new, :create, :edit, :destroy]
+      resources :categories, only: %i[index new create edit update destroy]
       resources :bulletins, only: :index
     end
   end
