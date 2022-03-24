@@ -13,6 +13,14 @@ class BulletinPolicy < ApplicationPolicy
     admin? || author?
   end
 
+  def to_moderate?
+    author?
+  end
+
+  def archive?
+    author?
+  end
+
   def admin_moderate?
     admin?
   end

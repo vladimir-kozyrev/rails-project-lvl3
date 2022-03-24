@@ -10,6 +10,14 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get show' do
+    user = users(:regular_user)
+    sign_in(user)
+    bulletin = bulletins(:owned_by_regular_user)
+    get bulletin_url(bulletin)
+    assert_response :success
+  end
+
   test 'should get new' do
     user = users(:regular_user)
     sign_in(user)
@@ -17,18 +25,10 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get show' do
-    user = users(:regular_user)
-    sign_in(user)
-    bulletin = bulletins(:two)
-    get bulletin_url(bulletin)
-    assert_response :success
-  end
-
   test 'should create bulletin' do
     user = users(:regular_user)
     sign_in(user)
-    category = categories(:one)
+    category = categories(:work)
     bulletin_title = Faker::Lorem.sentence
     bulletin_description = Faker::Lorem.paragraphs.join("\n")
     attrs = {
@@ -45,7 +45,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'should get edit' do
     user = users(:regular_user)
     sign_in(user)
-    bulletin = bulletins(:two)
+    bulletin = bulletins(:owned_by_regular_user)
     get edit_bulletin_url(bulletin)
     assert_response :success
   end
@@ -53,7 +53,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'should update bulletin' do
     user = users(:regular_user)
     sign_in(user)
-    bulletin = bulletins(:two)
+    bulletin = bulletins(:owned_by_regular_user)
     new_bulletin_title = Faker::Lorem.sentence
     attrs = {
       title: new_bulletin_title,
@@ -64,5 +64,15 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     put bulletin_url(bulletin), params: { bulletin: attrs }
     assert_response :redirect
     assert { Bulletin.find_by(title: new_bulletin_title) }
+  end
+
+  test 'to_moderate changes state to under_moderation' do
+    user = users(:regular_user)
+    sign_in(user)
+    bulletin = bulletins(:owned_by_regular_user)
+    assert { bulletin.draft? }
+    patch to_moderate_bulletin_url(bulletin)
+    assert_response :redirect
+    assert { Bulletin.where(id: bulletin.id).first.under_moderation? }
   end
 end

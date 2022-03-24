@@ -45,7 +45,12 @@ module Web
       end
     end
 
-    def to_moderate; end
+    def to_moderate
+      @bulletin = Bulletin.find(params[:id])
+      authorize @bulletin
+      @bulletin.to_moderate!
+      redirect_to profile_path, notice: 'Bulletin was sent for moderation.'
+    end
 
     def archive; end
 
