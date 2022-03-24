@@ -19,11 +19,12 @@ user = User.create(
   )
 end
 
-10.times do
+30.times do
   Bulletin.create(
     title: Faker::Emotion.unique.noun,
     description: Faker::Lorem.unique.paragraph,
     user_id: user.id,
-    category_id: Category.all.sample.id
+    category_id: Category.all.sample.id,
+    state: ['draft', 'under_moderation', 'published', 'rejected', 'archived'].sample
   )
 end
