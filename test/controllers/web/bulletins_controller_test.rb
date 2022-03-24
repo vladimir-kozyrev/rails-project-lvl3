@@ -17,6 +17,14 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get show' do
+    user = users(:regular_user)
+    bulletin = bulletins(:two)
+    sign_in(user)
+    get bulletin_url(bulletin)
+    assert_response :success
+  end
+
   test 'should create bulletin' do
     user = users(:regular_user)
     sign_in(user)
