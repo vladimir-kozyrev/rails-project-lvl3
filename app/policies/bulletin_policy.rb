@@ -12,4 +12,8 @@ class BulletinPolicy < ApplicationPolicy
   def admin_index?
     user&.admin?
   end
+
+  def profile?
+    user
+  end
 end
