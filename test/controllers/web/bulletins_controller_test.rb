@@ -75,4 +75,14 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert { Bulletin.where(id: bulletin.id).first.under_moderation? }
   end
+
+  test 'archive changes state to archived' do
+    user = users(:regular_user)
+    sign_in(user)
+    bulletin = bulletins(:owned_by_regular_user)
+    refute { bulletin.archived? }
+    patch archive_bulletin_url(bulletin)
+    assert_response :redirect
+    assert { Bulletin.where(id: bulletin.id).first.archived? }
+  end
 end

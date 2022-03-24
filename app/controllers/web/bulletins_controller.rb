@@ -49,10 +49,15 @@ module Web
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
       @bulletin.to_moderate!
-      redirect_to profile_path, notice: 'Bulletin was sent for moderation.'
+      redirect_to profile_path
     end
 
-    def archive; end
+    def archive
+      @bulletin = Bulletin.find(params[:id])
+      authorize @bulletin
+      @bulletin.archive!
+      redirect_to profile_path
+    end
 
     def profile
       @bulletins = Bulletin.where(user_id: current_user.id)

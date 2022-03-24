@@ -17,5 +17,9 @@ hr
           td
             = link_to t('.show'), bulletin_path(bulletin), class: 'me-2'
             = link_to t('.edit'), edit_bulletin_path(bulletin), class: 'me-2'
-            = link_to t('.moderate'), to_moderate_bulletin_path(bulletin), method: :patch, class: 'me-2'
-            = link_to t('.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'me-2'
+            - if bulletin.draft?
+              = link_to t('.moderate'), to_moderate_bulletin_path(bulletin), method: :patch, class: 'me-2'
+            - unless bulletin.archived?
+              = link_to t('.archive'), archive_bulletin_path(bulletin), method: :patch,
+                                                                        class: 'me-2 text-danger',
+                                                                        data: { confirm: 'Are you sure?' }

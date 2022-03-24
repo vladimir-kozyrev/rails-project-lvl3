@@ -23,8 +23,8 @@ class Bulletin < ApplicationRecord
       transitions from: :draft, to: :under_moderation
     end
 
-    # event :archive do
-    #   transitions from: [:published, :under_moderation], to: :archived
-    # end
+    event :archive do
+      transitions to: :archived
+    end
   end
 end
