@@ -19,8 +19,8 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get show' do
     user = users(:regular_user)
-    bulletin = bulletins(:two)
     sign_in(user)
+    bulletin = bulletins(:two)
     get bulletin_url(bulletin)
     assert_response :success
   end
@@ -40,5 +40,29 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     post bulletins_url, params: { bulletin: attrs }
     assert_response :redirect
     assert { Bulletin.find_by(title: bulletin_title) }
+  end
+
+  test 'should get edit' do
+    user = users(:regular_user)
+    sign_in(user)
+    bulletin = bulletins(:two)
+    get edit_bulletin_url(bulletin)
+    assert_response :success
+  end
+
+  test 'should update bulletin' do
+    user = users(:regular_user)
+    sign_in(user)
+    bulletin = bulletins(:two)
+    new_bulletin_title = Faker::Lorem.sentence
+    attrs = {
+      title: new_bulletin_title,
+      description: bulletin.description,
+      category_id: bulletin.category_id,
+      user_id: bulletin.user_id
+    }
+    put bulletin_url(bulletin), params: { bulletin: attrs }
+    assert_response :redirect
+    assert { Bulletin.find_by(title: new_bulletin_title) }
   end
 end

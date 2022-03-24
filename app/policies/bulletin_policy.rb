@@ -9,15 +9,29 @@ class BulletinPolicy < ApplicationPolicy
     user
   end
 
-  def moderate?
-    user&.admin?
+  def update?
+    admin? || author?
+  end
+
+  def admin_moderate?
+    admin?
   end
 
   def admin_index?
-    user&.admin?
+    admin?
   end
 
   def profile?
     user
+  end
+
+  private
+
+  def author?
+    record.user == user
+  end
+
+  def admin?
+    user&.admin?
   end
 end
