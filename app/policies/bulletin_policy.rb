@@ -10,7 +10,11 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def update?
-    admin? || author?
+    author?
+  end
+
+  def profile?
+    user
   end
 
   def to_moderate?
@@ -18,7 +22,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def archive?
-    author?
+    admin? || author?
   end
 
   def admin_moderate?
@@ -29,8 +33,12 @@ class BulletinPolicy < ApplicationPolicy
     admin?
   end
 
-  def profile?
-    user
+  def admin_publish?
+    admin?
+  end
+
+  def admin_reject?
+    admin?
   end
 
   private

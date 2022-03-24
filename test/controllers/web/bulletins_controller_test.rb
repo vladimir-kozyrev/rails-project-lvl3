@@ -13,7 +13,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'should get show' do
     user = users(:regular_user)
     sign_in(user)
-    bulletin = bulletins(:owned_by_regular_user)
+    bulletin = bulletins(:draft)
     get bulletin_url(bulletin)
     assert_response :success
   end
@@ -45,7 +45,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'should get edit' do
     user = users(:regular_user)
     sign_in(user)
-    bulletin = bulletins(:owned_by_regular_user)
+    bulletin = bulletins(:draft)
     get edit_bulletin_url(bulletin)
     assert_response :success
   end
@@ -53,7 +53,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'should update bulletin' do
     user = users(:regular_user)
     sign_in(user)
-    bulletin = bulletins(:owned_by_regular_user)
+    bulletin = bulletins(:draft)
     new_bulletin_title = Faker::Lorem.sentence
     attrs = {
       title: new_bulletin_title,
@@ -69,8 +69,8 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'to_moderate changes state to under_moderation' do
     user = users(:regular_user)
     sign_in(user)
-    bulletin = bulletins(:owned_by_regular_user)
-    assert { bulletin.draft? }
+    bulletin = bulletins(:draft)
+    assert bulletin.draft?
     patch to_moderate_bulletin_url(bulletin)
     assert_response :redirect
     assert { Bulletin.where(id: bulletin.id).first.under_moderation? }
@@ -79,10 +79,30 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'archive changes state to archived' do
     user = users(:regular_user)
     sign_in(user)
-    bulletin = bulletins(:owned_by_regular_user)
-    refute { bulletin.archived? }
+    bulletin = bulletins(:draft)
+    refute bulletin.archived?
     patch archive_bulletin_url(bulletin)
     assert_response :redirect
     assert { Bulletin.where(id: bulletin.id).first.archived? }
+  end
+
+  test 'publish changes state to published' do
+    user = users(:admin)
+    sign_in(user)
+    bulletin = bulletins(:under_moderation)
+    assert bulletin.under_moderation?
+    patch admin_publish_url(bulletin)
+    assert_response :redirect
+    assert { Bulletin.where(id: bulletin.id).first.published? }
+  end
+
+  test 'reject changes state to rejected' do
+    user = users(:admin)
+    sign_in(user)
+    bulletin = bulletins(:under_moderation)
+    assert bulletin.under_moderation?
+    patch admin_reject_url(bulletin)
+    assert_response :redirect
+    assert { Bulletin.where(id: bulletin.id).first.rejected? }
   end
 end

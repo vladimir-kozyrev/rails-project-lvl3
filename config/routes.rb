@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     scope 'admin', as: 'admin' do
       root 'bulletins#admin_index', as: :index
       get 'bulletins', to: 'bulletins#admin_moderate', as: :moderate
+      patch 'bulletins/:id/publish', to: 'bulletins#admin_publish', as: :publish
+      patch 'bulletins/:id/reject', to: 'bulletins#admin_reject', as: :reject
+      patch 'bulletins/:id/archive', to: 'bulletins#archive', as: :archive
       resources :categories, only: %i[index new create edit update destroy]
     end
   end

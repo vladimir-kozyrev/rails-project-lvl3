@@ -3,3 +3,22 @@
   .col-md-6
     .h2
       = t('.bulletins_on_moderation')
+    table.table.table-borderless
+      thead
+        tr
+          th = 'Title'
+          th = 'Actions'
+      tbody
+        - @bulletins.each do |bulletin|
+          tr
+            td = bulletin.title
+            td
+              = link_to t('.approve'), admin_publish_path(bulletin), method: :patch,
+                                                                     class: 'me-2',
+                                                                     data: { confirm: 'Confirm approval' }
+              = link_to t('.reject'), admin_reject_path(bulletin), method: :patch,
+                                                                   class: 'me-2',
+                                                                   data: { confirm: 'Confirm rejection' }
+              = link_to t('.archive'), admin_archive_path(bulletin), method: :patch,
+                                                                     class: 'me-2 text-danger',
+                                                                     data: { confirm: 'Confirm archival' }
