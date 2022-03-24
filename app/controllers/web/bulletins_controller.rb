@@ -8,7 +8,10 @@ module Web
       @bulletins = Bulletin.all.order(created_at: :desc)
     end
 
-    def show; end
+    def show
+      @bulletin = Bulletin.find(params[:id])
+      authorize @bulletin
+    end
 
     def new
       user = User.find(session[:user_id])
@@ -35,6 +38,11 @@ module Web
 
     def archive; end
 
+    def profile
+      @bulletins = Bulletin.where(user_id: current_user.id)
+      authorize @bulletins
+    end
+
     def admin_moderate
       @bulletins = Bulletin.all
       authorize @bulletins
@@ -42,11 +50,6 @@ module Web
 
     def admin_index
       @bulletins = Bulletin.all
-      authorize @bulletins
-    end
-
-    def profile
-      @bulletins = Bulletin.where(user_id: current_user.id)
       authorize @bulletins
     end
 

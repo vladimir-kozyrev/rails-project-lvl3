@@ -5,6 +5,10 @@ class BulletinPolicy < ApplicationPolicy
     user
   end
 
+  def show?
+    user
+  end
+
   def moderate?
     user&.admin?
   end

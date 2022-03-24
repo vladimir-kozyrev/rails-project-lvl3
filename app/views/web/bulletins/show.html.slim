@@ -1,0 +1,13 @@
+h1.my-4
+  = @bulletin.title
+hr
+.row
+  .col-6
+    p
+      strong = t('.author') + ': '
+      = @bulletin.user.name
+    p
+      = @bulletin.description
+  .col-6
+    - if @bulletin.image_attachment
+      = image_tag(@bulletin.image, class: 'img-fluid')

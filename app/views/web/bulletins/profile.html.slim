@@ -10,8 +10,8 @@ hr
         th = 'State'
         th = 'Actions'
     tbody
-      tr
-        - @bulletins.each do |bulletin|
+      - @bulletins.each do |bulletin|
+        tr
           td = bulletin.title
           td = bulletin.state
           td
