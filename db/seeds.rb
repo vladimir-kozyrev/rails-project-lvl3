@@ -25,6 +25,6 @@ end
     description: Faker::Lorem.unique.paragraph,
     user_id: user.id,
     category_id: Category.all.sample.id,
-    state: ['draft', 'under_moderation', 'published', 'rejected', 'archived'].sample
+    state: %w[draft under_moderation published rejected archived].sample
   )
 end

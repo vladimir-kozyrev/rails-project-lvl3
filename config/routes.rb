@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     patch 'bulletins/:id/archive', to: 'bulletins#archive', as: :archive_bulletin
 
     scope 'admin', as: 'admin' do
-      root 'bulletins#admin_moderate', as: :moderate
-      get 'bulletins', to: 'bulletins#admin_index', as: :index
+      root 'bulletins#admin_index', as: :index
+      get 'bulletins', to: 'bulletins#admin_moderate', as: :moderate
       resources :categories, only: %i[index new create edit update destroy]
     end
   end
