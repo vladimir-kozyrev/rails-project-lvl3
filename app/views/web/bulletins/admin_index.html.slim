@@ -6,8 +6,8 @@
     table.table.table-borderless
       thead
         tr
-          th = 'Name'
-          th = 'Actions'
+          th = t('.name')
+          th = t('.actions')
       tbody
         - @bulletins.each do |bulletin|
           tr
@@ -15,10 +15,10 @@
             td
               = link_to t('.approve'), admin_publish_path(bulletin), method: :patch,
                                                                      class: 'me-2',
-                                                                     data: { confirm: 'Confirm approval' }
+                                                                     data: { confirm: t('.confirm_approval') }
               = link_to t('.reject'), admin_reject_path(bulletin), method: :patch,
                                                                    class: 'me-2',
-                                                                   data: { confirm: 'Confirm rejection' }
+                                                                   data: { confirm: t('.confirm_rejection') }
               = link_to t('.archive'), admin_archive_path(bulletin), method: :patch,
                                                                      class: 'me-2 text-danger',
-                                                                     data: { confirm: 'Confirm archival' }
+                                                                     data: { confirm: t('.confirm_archival') }
