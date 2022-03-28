@@ -18,7 +18,7 @@ module Web
       @category = Category.new(category_params)
       authorize @category
       if @category.save
-        redirect_to admin_categories, notice: 'Successfully created the category'
+        redirect_to admin_categories_path, notice: 'Successfully created the category'
       else
         render :new, alert: 'Failed to create the category'
       end
@@ -33,7 +33,7 @@ module Web
       @category = Category.find(params[:id])
       authorize @category
       if @category.update(category_params)
-        redirect_to admin_categories, notice: 'Successfully updated the category'
+        redirect_to admin_categories_path, notice: 'Successfully updated the category'
       else
         render :edit, alert: 'Failed to update the category'
       end
@@ -43,7 +43,7 @@ module Web
       @category = Category.find(params[:id])
       authorize @category
       @category.delete
-      redirect_to admin_categories, notice: 'The category was deleted'
+      redirect_to admin_categories_path, notice: 'The category was deleted'
     end
 
     private
