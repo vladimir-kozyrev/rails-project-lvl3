@@ -5,7 +5,8 @@ module Web
     after_action :verify_authorized, except: %i[index]
 
     def index
-      @bulletins = Bulletin.where(state: 'published').order(created_at: :desc)
+      @q = Bulletin.ransack(params[:q])
+      @bulletins = @q.result.where(state: 'published').order(created_at: :desc)
     end
 
     def show

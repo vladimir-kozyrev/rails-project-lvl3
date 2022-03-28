@@ -8,6 +8,7 @@ Hexlet tests and linter status
 TODO
 ====
 * Write tests for BulletinsController
+* Write tests for search forms
 * Write tests for CategoriesController
 
 Heroku URI
