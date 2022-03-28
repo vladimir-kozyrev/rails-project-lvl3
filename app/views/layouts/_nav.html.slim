@@ -8,6 +8,11 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
             = link_to t('.add_bulletin'), new_bulletin_path, class: 'nav-link'
           li.nav-item
             = link_to t('.my_bulletins'), profile_path, class: 'nav-link'
+          - if current_user.admin?
+            li.nav-item
+              = link_to t('.admin'), admin_index_path, class: 'nav-link'
+          li.nav-item
+            = link_to t('.sign_out'), '/auth/logout', method: :destroy, class: 'nav-link'
         - else
           li.nav-item
             = link_to t('.sign_in'), '/auth/github', method: :post, class: 'nav-link'
