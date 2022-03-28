@@ -5,7 +5,7 @@ module Web
     after_action :verify_authorized
 
     def index
-      @categories = Category.all
+      @categories = Category.order(id: :asc)
       authorize @categories
     end
 
