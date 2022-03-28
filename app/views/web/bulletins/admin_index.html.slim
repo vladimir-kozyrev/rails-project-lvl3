@@ -6,12 +6,12 @@
     table.table.table-borderless
       thead
         tr
-          th = 'Title'
+          th = 'Name'
           th = 'Actions'
       tbody
         - @bulletins.each do |bulletin|
           tr
-            td = bulletin.title
+            td = link_to bulletin.title, bulletin_path(bulletin)
             td
               = link_to t('.approve'), admin_publish_path(bulletin), method: :patch,
                                                                      class: 'me-2',

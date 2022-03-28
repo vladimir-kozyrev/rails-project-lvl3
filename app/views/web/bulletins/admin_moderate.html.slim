@@ -3,3 +3,21 @@
   .col-md-6
     .h2
        = t('.bulletins')
+    table.table.table-borderless
+      thead
+        tr
+          th = 'Name'
+          th = 'State'
+          th = 'Actions'
+      tbody
+        - @bulletins.each do |bulletin|
+          tr
+            td = link_to bulletin.title, bulletin_path(bulletin)
+            td = bulletin.state
+            td
+              = link_to t('.show'), bulletin_path(bulletin), method: :patch,
+                                                             class: 'me-2',
+                                                             data: { confirm: 'Confirm approval' }
+              = link_to t('.archive'), admin_archive_path(bulletin), method: :patch,
+                                                                     class: 'me-2 text-danger',
+                                                                     data: { confirm: 'Confirm archival' }
