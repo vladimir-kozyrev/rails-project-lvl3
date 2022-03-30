@@ -6,7 +6,7 @@ module Web
 
     def index
       @q = Bulletin.ransack(params[:q])
-      @bulletins = @q.result.where(state: 'published').order(created_at: :desc)
+      @bulletins = @q.result.where(state: 'published').order(created_at: :desc).page(params[:page])
     end
 
     def show
@@ -66,7 +66,7 @@ module Web
 
     def profile
       @q = Bulletin.ransack(params[:q])
-      @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc)
+      @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
       authorize @bulletins
     end
 
@@ -77,7 +77,7 @@ module Web
 
     def admin_moderate
       @q = Bulletin.ransack(params[:q])
-      @bulletins = @q.result.order(created_at: :desc)
+      @bulletins = @q.result.order(created_at: :desc).page(params[:page])
       authorize @bulletins
     end
 

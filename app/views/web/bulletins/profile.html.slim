@@ -25,3 +25,4 @@ hr
               = link_to t('.archive'), archive_bulletin_path(bulletin), method: :patch,
                                                                         class: 'me-2 text-danger',
                                                                         data: { confirm: 'Are you sure?' }
+= paginate @bulletins
