@@ -25,4 +25,4 @@
                 = link_to t('.archive'), admin_archive_path(bulletin), method: :patch,
                                                                       class: 'me-2 text-danger',
                                                                       data: { confirm: t('.confirm_archival') }
-= paginate @bulletins
+    = paginate @bulletins
