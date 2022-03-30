@@ -20,3 +20,4 @@
               = link_to t('.destroy'), admin_category_path(category), method: :delete,
                                                                       class: 'me-2 text-danger',
                                                                       data: { confirm: t('.confirm_destruction') }
+    = paginate @categories
