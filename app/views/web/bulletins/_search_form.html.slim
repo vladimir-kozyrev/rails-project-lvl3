@@ -1,0 +1,16 @@
+= search_form_for(@q, class: 'form-inline', url: url) do |f|
+  .row
+    .col-md-6.form-group
+      = f.input :title_cont, label: false, input_html: { class: 'form-control' }
+      small[class='form-text text-muted']
+        = 'Search bulletin title'
+    .col-md-4.form-group
+      = f.input :category_id_eq, as: :select,
+                                 collection: Category.all,
+                                 label: false,
+                                 input_html: { class: 'form-control' }
+      small[class='form-text text-muted']
+        = 'Choose category'
+    .col-md-2
+      = f.submit class: 'btn btn-primary me-2'
+      = link_to 'Reset', root_path, class: 'btn btn-outline-primary'

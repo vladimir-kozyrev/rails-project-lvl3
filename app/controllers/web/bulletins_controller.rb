@@ -40,7 +40,7 @@ module Web
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
       if @bulletin.update(bulletin_params)
-        redirect_to bulletin_path, notice: 'Bulletin was successfully updated.'
+        redirect_to profile_path, notice: 'Bulletin was successfully updated.'
       else
         render :edit
       end
@@ -65,7 +65,8 @@ module Web
     end
 
     def profile
-      @bulletins = Bulletin.where(user_id: current_user.id)
+      @q = Bulletin.ransack(params[:q])
+      @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc)
       authorize @bulletins
     end
 
@@ -75,7 +76,8 @@ module Web
     end
 
     def admin_moderate
-      @bulletins = Bulletin.all
+      @q = Bulletin.ransack(params[:q])
+      @bulletins = @q.result.order(created_at: :desc)
       authorize @bulletins
     end
 
