@@ -34,6 +34,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'faker'
   gem 'minitest-power_assert'
+  gem 'sqlite3'
 end
 
 group :development do

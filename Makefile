@@ -18,7 +18,6 @@ check: lint test
 ci-setup:
 	yarn install
 	bundle install --without production development
-	docker-compose up -d
 	RAILS_ENV=test bin/rails db:prepare
 
 .PHONY: test
