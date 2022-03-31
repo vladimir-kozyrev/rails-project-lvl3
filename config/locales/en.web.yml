@@ -1,5 +1,15 @@
 en:
   web:
     bulletins:
+      index:
+        bulletins: 'Bulletins'
+      new:
+        add_bulletin: 'Add bulletin'
       show:
-        author: Author
+        author: 'Author'
+      profile:
+        add_bulletin: 'Add bulletin'
+        my_bulletins: 'My bulletins'
+      search_form:
+        search_bulletin_title: 'Search bulletin title'
+        choose_category: 'Choose category'
