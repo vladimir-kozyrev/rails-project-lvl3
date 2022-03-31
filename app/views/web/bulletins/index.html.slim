@@ -9,7 +9,7 @@ ul.list-group.list-group-flush
     .row.list-group-item
       .col.col-md-6
         .row
-          = bulletin.title
+          = link_to bulletin.title, bulletin_path(bulletin)
         - if bulletin.image_attachment
           .row
             = image_tag bulletin.image.variant(resize_to_limit: [200, 100]), class: 'img-thumbnail mb-2'
