@@ -19,7 +19,7 @@ user = User.create(
   )
 end
 
-200.times do
+100.times do
   Bulletin.create(
     title: Faker::Emotion.unique.noun,
     description: Faker::Lorem.unique.paragraph,
