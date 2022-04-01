@@ -15,7 +15,7 @@ class AdminPolicy
     admin?
   end
 
-  def approve?
+  def publish?
     admin?
   end
 

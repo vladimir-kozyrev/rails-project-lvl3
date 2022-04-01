@@ -6,7 +6,7 @@ module Web
 
     def moderate
       @bulletins = Bulletin.where(state: 'under_moderation')
-      authorize :admin, :moderate?
+      authorize :admin
     end
 
     def bulletins
@@ -17,21 +17,21 @@ module Web
 
     def publish
       @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
+      authorize :admin
       @bulletin.publish!
       redirect_to admin_moderate_path
     end
 
     def reject
       @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
+      authorize :admin
       @bulletin.reject!
       redirect_to admin_moderate_path
     end
 
     def archive
       @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
+      authorize :admin
       @bulletin.archive!
       redirect_to admin_moderate_path
     end
