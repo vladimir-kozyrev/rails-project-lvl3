@@ -25,22 +25,6 @@ class BulletinPolicy < ApplicationPolicy
     admin? || author?
   end
 
-  def admin_moderate?
-    admin?
-  end
-
-  def admin_index?
-    admin?
-  end
-
-  def admin_publish?
-    admin?
-  end
-
-  def admin_reject?
-    admin?
-  end
-
   private
 
   def author?

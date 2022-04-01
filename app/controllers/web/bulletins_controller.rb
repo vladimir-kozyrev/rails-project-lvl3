@@ -57,42 +57,13 @@ module Web
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
       @bulletin.archive!
-      if current_user.admin?
-        redirect_to admin_index_path
-      else
-        redirect_to profile_path
-      end
+      redirect_to profile_path
     end
 
     def profile
       @q = Bulletin.ransack(params[:q])
       @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
       authorize @bulletins
-    end
-
-    def admin_index
-      @bulletins = Bulletin.where(state: 'under_moderation')
-      authorize @bulletins
-    end
-
-    def admin_moderate
-      @q = Bulletin.ransack(params[:q])
-      @bulletins = @q.result.order(created_at: :desc).page(params[:page])
-      authorize @bulletins
-    end
-
-    def admin_publish
-      @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
-      @bulletin.publish!
-      redirect_to admin_index_path
-    end
-
-    def admin_reject
-      @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
-      @bulletin.reject!
-      redirect_to admin_index_path
     end
 
     private

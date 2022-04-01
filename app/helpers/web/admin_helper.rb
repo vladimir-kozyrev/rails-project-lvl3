@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-module Web::AdminsHelper
+module Web::AdminHelper
 end
