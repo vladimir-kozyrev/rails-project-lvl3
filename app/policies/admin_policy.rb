@@ -23,6 +23,10 @@ class AdminPolicy
     admin?
   end
 
+  def archive?
+    admin?
+  end
+
   private
 
   def admin?

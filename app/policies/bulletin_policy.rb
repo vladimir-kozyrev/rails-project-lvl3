@@ -22,7 +22,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def archive?
-    admin? || author?
+    author?
   end
 
   private
