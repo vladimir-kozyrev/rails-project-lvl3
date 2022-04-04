@@ -60,12 +60,6 @@ module Web
       redirect_to profile_path
     end
 
-    def profile
-      @q = Bulletin.ransack(params[:q])
-      @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
-      authorize @bulletins
-    end
-
     private
 
     def bulletin_params
