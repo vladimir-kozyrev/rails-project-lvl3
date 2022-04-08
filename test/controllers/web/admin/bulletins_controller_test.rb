@@ -3,10 +3,15 @@
 require 'test_helper'
 
 class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
-  test 'regular user cannot get bulletins under moderation' do
+  test 'regular user cannot access admin bulletins endpoints' do
     user = users(:regular_user)
     sign_in(user)
+    bulletin = bulletins(:published)
     assert_raises(Pundit::NotAuthorizedError) { get admin_root_url }
+    assert_raises(Pundit::NotAuthorizedError) { get admin_bulletins_url }
+    assert_raises(Pundit::NotAuthorizedError) { patch publish_admin_bulletin_url(bulletin) }
+    assert_raises(Pundit::NotAuthorizedError) { patch reject_admin_bulletin_url(bulletin) }
+    assert_raises(Pundit::NotAuthorizedError) { patch archive_admin_bulletin_url(bulletin) }
   end
 
   test 'should get bulletins under moderation' do

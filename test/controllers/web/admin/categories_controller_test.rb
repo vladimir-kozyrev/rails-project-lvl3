@@ -3,6 +3,22 @@
 require 'test_helper'
 
 class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
+  test 'regular user cannot access admin categories endpoints' do
+    user = users(:regular_user)
+    sign_in(user)
+    category = categories(:work)
+    assert_raises(Pundit::NotAuthorizedError) { get admin_categories_url }
+    assert_raises(Pundit::NotAuthorizedError) do
+      post admin_categories_url, params: { category: { name: Faker::Lorem.sentence } }
+    end
+    assert_raises(Pundit::NotAuthorizedError) { get new_admin_category_url }
+    assert_raises(Pundit::NotAuthorizedError) { get edit_admin_category_url(category) }
+    assert_raises(Pundit::NotAuthorizedError) do
+      patch admin_category_url(category), params: { category: { name: Faker::Lorem.sentence } }
+    end
+    assert_raises(Pundit::NotAuthorizedError) { delete admin_category_url(category) }
+  end
+
   test 'should get index' do
     user = users(:admin)
     sign_in(user)
