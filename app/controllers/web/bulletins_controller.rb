@@ -25,9 +25,9 @@ module Web
       @bulletin = user.bulletins.build(bulletin_params)
       authorize @bulletin
       if @bulletin.save
-        redirect_to bulletins_path, notice: 'The bulletin was successfully created'
+        redirect_to bulletins_path, notice: t('.success')
       else
-        render :new, alert: 'Failed to create the bulletin'
+        render :new, alert: t('.failure')
       end
     end
 
@@ -40,7 +40,7 @@ module Web
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
       if @bulletin.update(bulletin_params)
-        redirect_to profile_path, notice: 'Bulletin was successfully updated.'
+        redirect_to profile_path, notice: t('.success')
       else
         render :edit
       end

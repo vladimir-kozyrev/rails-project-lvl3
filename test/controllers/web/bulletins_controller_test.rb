@@ -81,7 +81,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     user = users(:regular_user)
     sign_in(user)
     bulletin = bulletins(:draft)
-    refute bulletin.archived?
+    assert_not bulletin.archived?
     patch archive_bulletin_url(bulletin)
     assert_response :redirect
     assert { Bulletin.where(id: bulletin.id).first.archived? }

@@ -17,9 +17,9 @@ class Web::Admin::CategoriesController < ApplicationController
     @category = Category.new(category_params)
     authorize @category
     if @category.save
-      redirect_to admin_categories_path, notice: 'Successfully created the category'
+      redirect_to admin_categories_path, notice: t('.success')
     else
-      render :new, alert: 'Failed to create the category'
+      render :new, alert: t('.failure')
     end
   end
 
@@ -32,9 +32,9 @@ class Web::Admin::CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     authorize @category
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: 'Successfully updated the category'
+      redirect_to admin_categories_path, notice: t('.success')
     else
-      render :edit, alert: 'Failed to update the category'
+      render :edit, alert: t('.failure')
     end
   end
 
@@ -42,7 +42,7 @@ class Web::Admin::CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     authorize @category
     @category.delete
-    redirect_to admin_categories_path, notice: 'The category was deleted'
+    redirect_to admin_categories_path, notice: t('.success')
   end
 
   private

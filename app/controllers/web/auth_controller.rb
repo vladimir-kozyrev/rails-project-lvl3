@@ -6,9 +6,9 @@ module Web
       @user = User.find_or_create_from_auth(auth_hash)
       if @user
         session[:user_id] = @user.id
-        redirect_to root_path, notice: 'Signed in!'
+        redirect_to root_path, notice: t('.success')
       else
-        redirect_to root_path, alert: 'Could not sign in'
+        redirect_to root_path, alert: t('.failure')
       end
     end
 

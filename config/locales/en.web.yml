@@ -1,5 +1,9 @@
 en:
   web:
+    auth:
+      callback:
+        success: 'Signed in!'
+        failure: 'Could not sign in'
     bulletins:
       index:
         bulletins: 'Bulletins'
@@ -7,9 +11,24 @@ en:
         add_bulletin: 'Add bulletin'
       show:
         author: 'Author'
+      create:
+        success: 'The bulletin was successfully created'
+        failure: 'Failed to create the bulletin'
+      update:
+        success: 'Bulletin was successfully updated.'
       profile:
         add_bulletin: 'Add bulletin'
         my_bulletins: 'My bulletins'
       search_form:
         search_bulletin_title: 'Search bulletin title'
         choose_category: 'Choose category'
+    admin:
+      categories:
+        create:
+          success: 'Successfully created the category'
+          failure: 'Failed to create the category'
+        update:
+          success: 'Successfully updated the category'
+          failure: 'Failed to update the category'
+        destroy:
+          success: 'The category was deleted'
