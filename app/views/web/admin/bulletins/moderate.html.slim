@@ -13,12 +13,12 @@
           tr
             td = link_to bulletin.title, bulletin_path(bulletin)
             td
-              = link_to t('.approve'), admin_publish_path(bulletin), method: :patch,
+              = link_to t('.approve'), publish_admin_bulletin_path(bulletin), method: :patch,
                                                                      class: 'me-2',
                                                                      data: { confirm: t('.confirm_approval') }
-              = link_to t('.reject'), admin_reject_path(bulletin), method: :patch,
+              = link_to t('.reject'), reject_admin_bulletin_path(bulletin), method: :patch,
                                                                    class: 'me-2',
                                                                    data: { confirm: t('.confirm_rejection') }
-              = link_to t('.archive'), admin_archive_path(bulletin), method: :patch,
+              = link_to t('.archive'), archive_admin_bulletin_path(bulletin), method: :patch,
                                                                      class: 'me-2 text-danger',
                                                                      data: { confirm: t('.confirm_archival') }

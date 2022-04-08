@@ -8,7 +8,7 @@ class Web::Admin::BulletinsController < ApplicationController
     authorize :admin
   end
 
-  def bulletins
+  def index
     @q = Bulletin.ransack(params[:q])
     @bulletins = @q.result.order(created_at: :desc).page(params[:page])
     authorize :admin
@@ -18,20 +18,20 @@ class Web::Admin::BulletinsController < ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize :admin
     @bulletin.publish!
-    redirect_to admin_moderate_path
+    redirect_to admin_root_path
   end
 
   def reject
     @bulletin = Bulletin.find(params[:id])
     authorize :admin
     @bulletin.reject!
-    redirect_to admin_moderate_path
+    redirect_to admin_root_path
   end
 
   def archive
     @bulletin = Bulletin.find(params[:id])
     authorize :admin
     @bulletin.archive!
-    redirect_to admin_moderate_path
+    redirect_to admin_root_path
   end
 end

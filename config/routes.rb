@@ -15,12 +15,15 @@ Rails.application.routes.draw do
     patch 'bulletins/:id/to_moderate', to: 'bulletins#to_moderate', as: :to_moderate_bulletin
     patch 'bulletins/:id/archive', to: 'bulletins#archive', as: :archive_bulletin
 
-    scope 'admin', module: :admin, as: 'admin' do
-      root 'bulletins#moderate', as: :moderate
-      get 'bulletins', to: 'bulletins#bulletins', as: :bulletins
-      patch 'bulletins/:id/publish', to: 'bulletins#publish', as: :publish
-      patch 'bulletins/:id/reject', to: 'bulletins#reject', as: :reject
-      patch 'bulletins/:id/archive', to: 'bulletins#archive', as: :archive
+    scope 'admin', module: :admin, as: :admin do
+      root 'bulletins#moderate'
+      resources :bulletins, only: :index do
+        member do
+          patch 'publish'
+          patch 'reject'
+          patch 'archive'
+        end
+      end
       resources :categories, only: %i[index new create edit update destroy]
     end
   end

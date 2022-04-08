@@ -22,7 +22,7 @@
                                                              class: 'me-2',
                                                              data: { confirm: t('.confirm_approval') }
               - unless bulletin.archived?
-                = link_to t('.archive'), admin_archive_path(bulletin), method: :patch,
+                = link_to t('.archive'), archive_admin_bulletin_path(bulletin), method: :patch,
                                                                       class: 'me-2 text-danger',
                                                                       data: { confirm: t('.confirm_archival') }
     = paginate @bulletins

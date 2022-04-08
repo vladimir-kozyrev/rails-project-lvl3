@@ -11,7 +11,7 @@ class AdminPolicy
     admin?
   end
 
-  def bulletins?
+  def index?
     admin?
   end
 
