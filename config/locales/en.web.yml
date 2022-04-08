@@ -32,3 +32,4 @@ en:
           failure: 'Failed to update the category'
         destroy:
           success: 'The category was deleted'
+          failure: 'Could not delete the category because it has linked bulletins'

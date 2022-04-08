@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class Web::AdminsControllerTest < ActionDispatch::IntegrationTest
+class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'regular user cannot get bulletins under moderation' do
     user = users(:regular_user)
     sign_in(user)

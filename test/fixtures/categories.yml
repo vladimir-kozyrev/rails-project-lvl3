@@ -5,3 +5,6 @@ work:
 
 life:
   name: Life
+
+unused:
+  name: hello
