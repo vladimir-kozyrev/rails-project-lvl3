@@ -12,7 +12,6 @@
 # to know more about custom components.
 # Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }
 
-# rubocop:disable Metrics/BlockLength
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
   # Default class for buttons
@@ -483,4 +482,3 @@ SimpleForm.setup do |config|
   #   time:          :custom_multi_select
   # }
 end
-# rubocop:enable Metrics/BlockLength
