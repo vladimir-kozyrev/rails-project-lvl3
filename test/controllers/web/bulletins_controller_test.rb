@@ -4,18 +4,19 @@ require 'test_helper'
 
 class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'should get index' do
-    user = users(:regular_user)
-    sign_in(user)
     get bulletins_url
     assert_response :success
   end
 
   test 'should get show' do
-    user = users(:regular_user)
-    sign_in(user)
-    bulletin = bulletins(:draft)
+    bulletin = bulletins(:published)
     get bulletin_url(bulletin)
     assert_response :success
+  end
+
+  test 'should not show unpublished bulletins' do
+    bulletin = bulletins(:draft)
+    assert_raises(Pundit::NotAuthorizedError) { get bulletin_url(bulletin) }
   end
 
   test 'should get new' do

@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 class BulletinPolicy < ApplicationPolicy
+  def index?
+    true
+  end
+
   def create?
     user
   end
 
   def show?
-    user
+    published?
   end
 
   def update?
@@ -33,5 +37,9 @@ class BulletinPolicy < ApplicationPolicy
 
   def admin?
     user&.admin?
+  end
+
+  def published?
+    record.published?
   end
 end

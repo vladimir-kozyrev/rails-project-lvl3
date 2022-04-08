@@ -13,3 +13,10 @@ under_moderation:
   title: Dogs are fine animals
   description: Adopting a dog is a good deed
   state: under_moderation
+
+published:
+  user: regular_user
+  category: life
+  title: Cows are ok
+  description: I guess
+  state: published
