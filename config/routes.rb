@@ -10,10 +10,14 @@ Rails.application.routes.draw do
     post 'auth/:provider', to: 'auth#request', as: :auth_request
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
 
-    resources :bulletins, only: %i[index show new create edit update]
+    resources :bulletins, only: %i[index show new create edit update] do
+      member do
+        patch 'to_moderate'
+        patch 'archive'
+      end
+    end
+
     get 'profile', to: 'profile#profile', as: :profile
-    patch 'bulletins/:id/to_moderate', to: 'bulletins#to_moderate', as: :to_moderate_bulletin
-    patch 'bulletins/:id/archive', to: 'bulletins#archive', as: :archive_bulletin
 
     scope 'admin', module: :admin, as: :admin do
       root 'bulletins#moderate'
