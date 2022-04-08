@@ -30,7 +30,7 @@ Style/DoubleNegation:
   Enabled: false
 
 Lint/RescueException:
-  Enabled: false
+  Enabled: true
 
 Metrics/AbcSize:
   Enabled: false
