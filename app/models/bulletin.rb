@@ -8,7 +8,8 @@ class Bulletin < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :image, file_size: { less_than_or_equal_to: 5.megabytes },
+  validates :image, presence: true,
+                    file_size: { less_than_or_equal_to: 5.megabytes },
                     file_content_type: { allow: ['image/jpeg', 'image/png'] }
   has_one_attached :image
 
