@@ -56,6 +56,11 @@ group :test do
   gem 'webdrivers'
 end
 
+group :production do
+  gem 'aws-sdk-s3'
+  gem 'pg', '~> 1.3'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -66,7 +71,6 @@ gem 'image_processing'
 gem 'kaminari'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
-gem 'pg', '~> 1.3'
 gem 'pundit'
 gem 'ransack', '~> 2.6'
 gem 'rollbar'
