@@ -21,6 +21,6 @@ ci-setup:
 	RAILS_ENV=test bin/rails db:prepare
 
 reset-db:
-	rails db:drop && rails db:prepare && rails db:migrate
+	rails db:drop && rails db:prepare && rails db:seed
 
 .PHONY: test
