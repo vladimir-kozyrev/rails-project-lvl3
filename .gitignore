@@ -48,3 +48,5 @@ tags
 # VSCode
 *.code-workspace
 routes.txt
+
+.DS_Store
