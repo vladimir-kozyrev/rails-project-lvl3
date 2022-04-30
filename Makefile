@@ -20,4 +20,7 @@ ci-setup:
 	bundle install --without production development
 	RAILS_ENV=test bin/rails db:prepare
 
+reset-db:
+	rails db:drop && rails db:prepare && rails db:migrate
+
 .PHONY: test
