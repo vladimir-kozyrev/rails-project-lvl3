@@ -9,5 +9,4 @@ hr
     p
       = @bulletin.description
   .col-6
-    - if @bulletin.image_attachment
-      = image_tag(@bulletin.image, class: 'img-fluid')
+    = image_tag @bulletin.image, class: 'img-fluid'
