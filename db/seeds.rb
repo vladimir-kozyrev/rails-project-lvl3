@@ -20,11 +20,20 @@ user = User.create(
 end
 
 100.times do
+  image = File.open('public/images/bananas.jpeg')
   Bulletin.create(
     title: Faker::Emotion.unique.noun,
     description: Faker::Lorem.unique.paragraph,
     user_id: user.id,
     category_id: Category.all.sample.id,
-    state: %w[draft under_moderation published rejected archived].sample
+    state: %w[draft under_moderation published rejected archived].sample,
+    image: {
+      io: image,
+      filename: "banana"
+    }
   )
+  image.close
+  # sleep is needed to prevent SQLite3::BusyException: database is locked
+  # I would use PostgreSQL for local development if it was allowed for this project :(
+  sleep 1
 end
