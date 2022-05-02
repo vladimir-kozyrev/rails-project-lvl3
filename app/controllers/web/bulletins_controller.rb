@@ -42,7 +42,7 @@ module Web
       if @bulletin.update(bulletin_params)
         redirect_to profile_path, notice: t('.success')
       else
-        render :edit
+        render :edit, status: :bad_request
       end
     end
 

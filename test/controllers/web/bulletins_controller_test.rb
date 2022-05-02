@@ -36,7 +36,8 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
       title: bulletin_title,
       description: bulletin_description,
       category_id: category.id,
-      user_id: user.id
+      user_id: user.id,
+      image: fixture_file_upload(Rails.root.join('public/images/bananas.jpeg'), 'image/jpeg')
     }
     post bulletins_url, params: { bulletin: attrs }
     assert_response :redirect

@@ -29,7 +29,7 @@ end
     state: %w[draft under_moderation published rejected archived].sample,
     image: {
       io: image,
-      filename: "banana"
+      filename: 'banana'
     }
   )
   image.close
