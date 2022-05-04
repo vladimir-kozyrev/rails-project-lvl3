@@ -23,6 +23,13 @@ en:
         search_bulletin_title: 'Search bulletin title'
         choose_category: 'Choose category'
     admin:
+      bulletins:
+        index:
+          confirm_archival: 'Are you sure?'
+        moderate:
+          confirm_approval: 'Are you sure?'
+          confirm_rejection: 'Are you sure?'
+          confirm_archival: 'Are you sure?'
       categories:
         create:
           success: 'Successfully created the category'
