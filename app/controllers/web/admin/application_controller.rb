@@ -7,7 +7,7 @@ class Web::Admin::ApplicationController < ApplicationController
     authorize :admin
     false
   rescue Pundit::NotAuthorizedError
-    redirect_to root_path, alert: t('en.web.auth.not_authorized')
+    redirect_to root_path, alert: t('web.auth.not_authorized')
     true
   end
 end

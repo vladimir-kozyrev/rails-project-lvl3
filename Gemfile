@@ -33,6 +33,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'faker'
+  gem 'i18n-tasks'
   gem 'minitest-power_assert'
   gem 'sqlite3'
 end
