@@ -14,6 +14,8 @@ en:
       create:
         success: 'The bulletin was successfully created'
         failure: 'Failed to create the bulletin'
+      edit:
+        failure: 'You cannot edit bulletins that do not belong to you'
       update:
         success: 'Bulletin was successfully updated.'
       profile:
@@ -26,6 +28,7 @@ en:
       profile:
         add_bulletin: 'Add bulletin'
         my_bulletins: 'My bulletins'
+        failure: 'You must be logged in to access this page'
     admin:
       admin_nav:
         all_bulletins: 'All bulletins'
