@@ -12,6 +12,11 @@ module Web
       end
     end
 
+    def sign_out
+      reset_session
+      redirect_to root_url, notice: t('.signed_out')
+    end
+
     private
 
     def auth_hash
