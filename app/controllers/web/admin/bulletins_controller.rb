@@ -1,36 +1,41 @@
 # frozen_string_literal: true
 
-class Web::Admin::BulletinsController < ApplicationController
+class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   after_action :verify_authorized
 
   def moderate
+    return if redirected_to_root_path_because_not_authorized?
+
     @bulletins = Bulletin.where(state: 'under_moderation')
-    authorize :admin
   end
 
   def index
+    return if redirected_to_root_path_because_not_authorized?
+
     @q = Bulletin.ransack(params[:q])
     @bulletins = @q.result.order(created_at: :desc).page(params[:page])
-    authorize :admin
   end
 
   def publish
+    return if redirected_to_root_path_because_not_authorized?
+
     @bulletin = Bulletin.find(params[:id])
-    authorize :admin
     @bulletin.publish!
     redirect_to admin_root_path, notice: t('.success')
   end
 
   def reject
+    return if redirected_to_root_path_because_not_authorized?
+
     @bulletin = Bulletin.find(params[:id])
-    authorize :admin
     @bulletin.reject!
     redirect_to admin_root_path, notice: t('.success')
   end
 
   def archive
+    return if redirected_to_root_path_because_not_authorized?
+
     @bulletin = Bulletin.find(params[:id])
-    authorize :admin
     @bulletin.archive!
     redirect_to admin_root_path, notice: t('.success')
   end

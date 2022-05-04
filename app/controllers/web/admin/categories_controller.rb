@@ -1,21 +1,24 @@
 # frozen_string_literal: true
 
-class Web::Admin::CategoriesController < ApplicationController
+class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   after_action :verify_authorized
 
   def index
+    return if redirected_to_root_path_because_not_authorized?
+
     @categories = Category.order(id: :asc).page(params[:page])
-    authorize @categories
   end
 
   def new
+    return if redirected_to_root_path_because_not_authorized?
+
     @category = Category.new
-    authorize @category
   end
 
   def create
+    return if redirected_to_root_path_because_not_authorized?
+
     @category = Category.new(category_params)
-    authorize @category
     if @category.save
       redirect_to admin_categories_path, notice: t('.success')
     else
@@ -24,13 +27,15 @@ class Web::Admin::CategoriesController < ApplicationController
   end
 
   def edit
+    return if redirected_to_root_path_because_not_authorized?
+
     @category = Category.find(params[:id])
-    authorize @category
   end
 
   def update
+    return if redirected_to_root_path_because_not_authorized?
+
     @category = Category.find(params[:id])
-    authorize @category
     if @category.update(category_params)
       redirect_to admin_categories_path, notice: t('.success')
     else
@@ -39,8 +44,9 @@ class Web::Admin::CategoriesController < ApplicationController
   end
 
   def destroy
+    return if redirected_to_root_path_because_not_authorized?
+
     @category = Category.find(params[:id])
-    authorize @category
     if @category.bulletins.empty?
       @category.delete
       redirect_to admin_categories_path, notice: t('.success')

@@ -27,6 +27,30 @@ class AdminPolicy
     admin?
   end
 
+  def show?
+    admin?
+  end
+
+  def new?
+    create?
+  end
+
+  def create?
+    admin?
+  end
+
+  def edit?
+    update?
+  end
+
+  def update?
+    admin?
+  end
+
+  def destroy?
+    admin?
+  end
+
   private
 
   def admin?

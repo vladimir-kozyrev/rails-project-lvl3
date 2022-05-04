@@ -7,16 +7,18 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     user = users(:regular_user)
     sign_in(user)
     category = categories(:work)
-    assert_raises(Pundit::NotAuthorizedError) { get admin_categories_url }
-    assert_raises(Pundit::NotAuthorizedError) do
-      post admin_categories_url, params: { category: { name: Faker::Lorem.sentence } }
-    end
-    assert_raises(Pundit::NotAuthorizedError) { get new_admin_category_url }
-    assert_raises(Pundit::NotAuthorizedError) { get edit_admin_category_url(category) }
-    assert_raises(Pundit::NotAuthorizedError) do
-      patch admin_category_url(category), params: { category: { name: Faker::Lorem.sentence } }
-    end
-    assert_raises(Pundit::NotAuthorizedError) { delete admin_category_url(category) }
+    get admin_categories_url
+    assert_response :redirect
+    post admin_categories_url, params: { category: { name: Faker::Lorem.sentence } }
+    assert_response :redirect
+    get new_admin_category_url
+    assert_response :redirect
+    get edit_admin_category_url(category)
+    assert_response :redirect
+    patch admin_category_url(category), params: { category: { name: Faker::Lorem.sentence } }
+    assert_response :redirect
+    delete admin_category_url(category)
+    assert_response :redirect
   end
 
   test 'should get index' do

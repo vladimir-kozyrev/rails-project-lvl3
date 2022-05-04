@@ -7,11 +7,12 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     user = users(:regular_user)
     sign_in(user)
     bulletin = bulletins(:published)
-    assert_raises(Pundit::NotAuthorizedError) { get admin_root_url }
-    assert_raises(Pundit::NotAuthorizedError) { get admin_bulletins_url }
-    assert_raises(Pundit::NotAuthorizedError) { patch publish_admin_bulletin_url(bulletin) }
-    assert_raises(Pundit::NotAuthorizedError) { patch reject_admin_bulletin_url(bulletin) }
-    assert_raises(Pundit::NotAuthorizedError) { patch archive_admin_bulletin_url(bulletin) }
+    get admin_root_url
+    assert_response :redirect
+    get admin_bulletins_url
+    assert_response :redirect
+    patch reject_admin_bulletin_url(bulletin)
+    assert_response :redirect
   end
 
   test 'should get bulletins under moderation' do
