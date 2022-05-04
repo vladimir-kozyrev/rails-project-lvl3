@@ -25,7 +25,7 @@ module Web
       @bulletin = user.bulletins.build(bulletin_params)
       authorize @bulletin
       if @bulletin.save
-        redirect_to bulletins_path, notice: t('.success')
+        redirect_to profile_path, notice: t('.success')
       else
         render :new, alert: t('.failure')
       end
