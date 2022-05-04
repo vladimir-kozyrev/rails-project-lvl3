@@ -10,7 +10,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def show?
-    published? || author?
+    admin? || author? || published?
   end
 
   def update?
