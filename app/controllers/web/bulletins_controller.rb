@@ -33,11 +33,9 @@ module Web
 
     def edit
       @bulletin = Bulletin.find(params[:id])
-      begin
-        authorize @bulletin
-      rescue Pundit::NotAuthorizedError
-        redirect_to bulletin_path(@bulletin), alert: t('.failure')
-      end
+      authorize @bulletin
+    rescue Pundit::NotAuthorizedError
+      redirect_to root_path, alert: t('.failure')
     end
 
     def update

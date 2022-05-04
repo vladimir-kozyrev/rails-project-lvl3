@@ -7,7 +7,7 @@ class Web::ProfileController < ApplicationController
     begin
       authorize :bulletin
     rescue Pundit::NotAuthorizedError
-      redirect_to bulletins_path, alert: t('.failure')
+      redirect_to root_path, alert: t('.failure')
       return
     end
     @q = Bulletin.ransack(params[:q])
