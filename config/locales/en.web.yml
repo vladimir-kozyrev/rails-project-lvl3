@@ -30,6 +30,12 @@ en:
           confirm_approval: 'Are you sure?'
           confirm_rejection: 'Are you sure?'
           confirm_archival: 'Are you sure?'
+        publish:
+          success: 'The bulletin has been published'
+        reject:
+          success: 'The bulletin has been rejected'
+        archive:
+          success: 'The bulletin has been archived'
       categories:
         create:
           success: 'Successfully created the category'
