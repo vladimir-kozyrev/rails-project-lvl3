@@ -1,0 +1,9 @@
+en:
+  web:
+    auth:
+      sign_out:
+        signed_out: 'Signed out!'
+      callback:
+        success: 'Signed in!'
+        failure: 'Could not sign in'
+      not_authorized: 'You are not authorized to perform this action'

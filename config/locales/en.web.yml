@@ -1,11 +1,5 @@
 en:
   web:
-    auth:
-      sign_out:
-        signed_out: 'Signed out!'
-      callback:
-        success: 'Signed in!'
-        failure: 'Could not sign in'
     bulletins:
       index:
         bulletins: 'Bulletins'
@@ -13,6 +7,7 @@ en:
         add_bulletin: 'Add bulletin'
       show:
         author: 'Author'
+        failure: 'You are not authorized to perform this action'
       create:
         success: 'The bulletin was successfully created'
         failure: 'Failed to create the bulletin'
