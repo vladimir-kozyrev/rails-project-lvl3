@@ -22,14 +22,37 @@ en:
       search_form:
         search_bulletin_title: 'Search bulletin title'
         choose_category: 'Choose category'
+    profile:
+      profile:
+        add_bulletin: 'Add bulletin'
+        my_bulletins: 'My bulletins'
     admin:
+      admin_nav:
+        all_bulletins: 'All bulletins'
+        all_categories: 'All categories'
+        bulletins_on_moderation: 'Bulletins on moderation'
       bulletins:
+        search_form:
+          search_bulletin_title: 'Search bulletin title'
+          choose_category: 'Choose category'
         index:
+          bulletins: 'Bulletins'
           confirm_archival: 'Are you sure?'
+          show: 'Show'
+          archive: 'Archive'
+          name: 'Name'
+          state: 'State'
+          actions: 'Actions'
         moderate:
+          approve: 'Approve'
+          reject: 'Reject'
+          archive: 'Archive'
           confirm_approval: 'Are you sure?'
           confirm_rejection: 'Are you sure?'
           confirm_archival: 'Are you sure?'
+          bulletins_on_moderation: 'Bulletins on moderation'
+          name: 'Name'
+          actions: 'Actions'
         publish:
           success: 'The bulletin has been published'
         reject:
@@ -37,6 +60,15 @@ en:
         archive:
           success: 'The bulletin has been archived'
       categories:
+        index:
+          confirm_destruction: 'Are you sure?'
+          id: 'ID'
+          categories: 'Categories'
+          add_category: 'Add category'
+          name: 'Name'
+          actions: 'Actions'
+          edit: 'Edit'
+          destroy: 'Destroy'
         create:
           success: 'Successfully created the category'
           failure: 'Failed to create the category'
