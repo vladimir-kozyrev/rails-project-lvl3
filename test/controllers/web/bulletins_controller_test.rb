@@ -16,7 +16,8 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not show unpublished bulletins' do
     bulletin = bulletins(:draft)
-    assert_raises(Pundit::NotAuthorizedError) { get bulletin_url(bulletin) }
+    get bulletin_url(bulletin)
+    assert_response :redirect
   end
 
   test 'should get new' do

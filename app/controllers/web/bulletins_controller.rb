@@ -12,6 +12,8 @@ module Web
     def show
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
+    rescue Pundit::NotAuthorizedError
+      redirect_to root_path, alert: t('.failure')
     end
 
     def new
