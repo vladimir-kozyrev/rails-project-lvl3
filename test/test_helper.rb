@@ -17,6 +17,8 @@ class ActiveSupport::TestCase
 end
 
 class ActionDispatch::IntegrationTest
+  include AuthConcern
+
   def sign_in(user)
     auth_hash = {
       provider: 'github',
