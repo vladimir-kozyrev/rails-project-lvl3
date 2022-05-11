@@ -22,8 +22,7 @@ module Web
     end
 
     def create
-      user = User.find(session[:user_id])
-      @bulletin = user.bulletins.build(bulletin_params)
+      @bulletin = current_user.bulletins.build(bulletin_params)
       authorize @bulletin
       if @bulletin.save
         redirect_to profile_path, notice: t('.success')
