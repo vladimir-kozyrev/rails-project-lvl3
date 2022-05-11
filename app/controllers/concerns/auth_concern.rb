@@ -10,4 +10,8 @@ module AuthConcern
   def signed_in?
     !current_user.nil?
   end
+
+  def current_user_admin?
+    user_not_authorized unless current_user&.admin?
+  end
 end

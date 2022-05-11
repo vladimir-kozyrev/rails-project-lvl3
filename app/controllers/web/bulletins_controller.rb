@@ -12,8 +12,6 @@ module Web
     def show
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
-    rescue Pundit::NotAuthorizedError
-      redirect_to root_path, alert: t('web.auth.not_authorized')
     end
 
     def new
@@ -36,8 +34,6 @@ module Web
     def edit
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
-    rescue Pundit::NotAuthorizedError
-      redirect_to root_path, alert: t('web.auth.not_authorized')
     end
 
     def update
