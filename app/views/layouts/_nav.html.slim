@@ -10,7 +10,7 @@ nav.p-2.bg-dark.text-white
           = link_to t('web.bulletins.my_bulletins'), profile_path, class: 'text-white nav-link'
     ul.nav
       - if signed_in?
-        - if policy(:admin).moderate?
+        - if current_user_admin?
           li.nav-item
             = link_to t('.admin'), admin_root_path, class: 'text-white nav-link'
         li.nav-item
