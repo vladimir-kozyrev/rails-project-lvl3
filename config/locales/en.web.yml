@@ -10,8 +10,6 @@ en:
       create:
         success: 'The bulletin was successfully created'
         failure: 'Failed to create the bulletin'
-      edit:
-        failure: 'You cannot edit bulletins that do not belong to you'
       update:
         success: 'Bulletin was successfully updated.'
       search_form:
