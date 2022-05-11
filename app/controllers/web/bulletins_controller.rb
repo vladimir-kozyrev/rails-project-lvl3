@@ -2,7 +2,7 @@
 
 module Web
   class BulletinsController < ApplicationController
-    after_action :verify_authorized, except: %i[index]
+    after_action :verify_authorized, only: %i[show new create edit update to_moderate archive]
 
     def index
       @q = Bulletin.ransack(params[:q])
