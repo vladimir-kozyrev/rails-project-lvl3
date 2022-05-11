@@ -18,8 +18,34 @@ Ruby version
 ============
 3.0.2
 
-Run tests
-=========
+Available Makefile commands
+===========================
+Setup the application.
+```
+make setup
+```
+
+Run the application.
+```
+make start
+```
+
+Run tests.
+```
+make test
+```
+
+Run linters.
+```
+make lint
+```
+
+Run tests and linters.
 ```
 make check
+```
+
+Drop the database and prepare it for local development.
+```
+make reset-db
 ```
