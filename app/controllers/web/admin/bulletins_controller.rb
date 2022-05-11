@@ -20,23 +20,35 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
     return if redirected_to_root_path_because_not_authorized?
 
     @bulletin = Bulletin.find(params[:id])
-    @bulletin.publish!
-    redirect_to admin_root_path, notice: t('.success')
+    if @bulletin.may_publish?
+      @bulletin.publish!
+      redirect_to admin_root_path, notice: t('.success')
+    else
+      redirect_to admin_root_path, alert: t('.failure')
+    end
   end
 
   def reject
     return if redirected_to_root_path_because_not_authorized?
 
     @bulletin = Bulletin.find(params[:id])
-    @bulletin.reject!
-    redirect_to admin_root_path, notice: t('.success')
+    if @bulletin.may_reject?
+      @bulletin.reject!
+      redirect_to admin_root_path, notice: t('.success')
+    else
+      redirect_to admin_root_path, alert: t('.failure')
+    end
   end
 
   def archive
     return if redirected_to_root_path_because_not_authorized?
 
     @bulletin = Bulletin.find(params[:id])
-    @bulletin.archive!
-    redirect_to admin_root_path, notice: t('.success')
+    if @bulletin.may_archive?
+      @bulletin.archive!
+      redirect_to admin_root_path, notice: t('.success')
+    else
+      redirect_to admin_root_path, alert: t('.failure')
+    end
   end
 end

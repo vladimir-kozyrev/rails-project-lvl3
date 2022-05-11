@@ -15,6 +15,12 @@ en:
       search_form:
         search_bulletin_title: 'Search bulletin title'
         choose_category: 'Choose category'
+      to_moderate:
+        success: 'The bulletin was sent for moderation'
+        failure: 'Could not send the bulletin for moderation'
+      archive:
+        success: 'The bulletin was archived'
+        failure: 'Could not archive the bulletin'
     admin:
       confirmation: 'Are you sure?'
       admin_nav:
@@ -36,10 +42,13 @@ en:
           bulletins_on_moderation: 'Bulletins on moderation'
         publish:
           success: 'The bulletin has been published'
+          failure: 'Could not publish the bulletin'
         reject:
           success: 'The bulletin has been rejected'
+          failure: 'Could not reject the bulletin'
         archive:
           success: 'The bulletin has been archived'
+          failure: 'Could not archive the bulletin'
       categories:
         index:
           id: 'ID'

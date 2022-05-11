@@ -53,15 +53,23 @@ module Web
     def to_moderate
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
-      @bulletin.to_moderate!
-      redirect_to profile_path
+      if @bulletin.may_to_moderate?
+        @bulletin.to_moderate!
+        redirect_to profile_path, notice: t('.success')
+      else
+        redirect_to profile_path, alert: t('.failure')
+      end
     end
 
     def archive
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
-      @bulletin.archive!
-      redirect_to profile_path
+      if @bulletin.may_archive?
+        @bulletin.archive!
+        redirect_to profile_path, notice: t('.success')
+      else
+        redirect_to profile_path, notice: t('.failure')
+      end
     end
 
     private
