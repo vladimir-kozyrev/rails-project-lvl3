@@ -31,7 +31,7 @@ class Web::AuthControllerTest < ActionDispatch::IntegrationTest
     user = users(:regular_user)
     sign_in(user)
     assert signed_in?
-    get sign_out_url
+    delete sign_out_url
     assert_not signed_in?
   end
 end
