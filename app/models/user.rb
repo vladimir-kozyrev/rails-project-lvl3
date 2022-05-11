@@ -12,8 +12,4 @@ class User < ApplicationRecord
     user.save
     user
   end
-
-  def admin?
-    admin
-  end
 end
