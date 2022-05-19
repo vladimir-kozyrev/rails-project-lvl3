@@ -29,3 +29,8 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+    hints:
+      q:
+        index:
+          category_id_eq: Choose category
+          title_cont: Search bulletin title
