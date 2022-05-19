@@ -8,7 +8,7 @@ module AuthConcern
   end
 
   def signed_in?
-    !current_user.nil?
+    current_user.present?
   end
 
   def current_user_admin?
