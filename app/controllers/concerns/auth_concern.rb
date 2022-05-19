@@ -15,7 +15,7 @@ module AuthConcern
     current_user&.admin?
   end
 
-  def raise_unless_current_user_admin
+  def authorize_admin
     raise Pundit::NotAuthorizedError unless current_user_admin?
   end
 end
