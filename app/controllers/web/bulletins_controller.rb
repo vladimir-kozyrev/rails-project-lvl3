@@ -17,8 +17,8 @@ module Web
     end
 
     def new
+      authorize :bulletin
       @bulletin = current_user.bulletins.build
-      authorize @bulletin
     end
 
     def create
