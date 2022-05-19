@@ -72,7 +72,6 @@ module Web
 
     def bulletin_params
       params.require(:bulletin).permit(
-        :category,
         :title,
         :description,
         :category_id,
