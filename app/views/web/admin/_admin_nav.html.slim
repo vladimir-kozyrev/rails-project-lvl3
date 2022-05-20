@@ -1,11 +1,5 @@
 .col-md-3
   .nav.flex-column.nav-pills
-    - if current_page?(admin_root_path)
-      - admin_root_path_class = 'active'
-    - if current_page?(admin_bulletins_path)
-      - admin_bulletins_path_class = 'active'
-    - if current_page?(admin_categories_path)
-      - admin_categories_path_class = 'active'
     = link_to t('.bulletins_on_moderation'), admin_root_path, class: "nav-link link-dark #{admin_root_path_class}"
     = link_to t('.all_bulletins'), admin_bulletins_path, class: "nav-link link-dark #{admin_bulletins_path_class}"
     = link_to t('.all_categories'), admin_categories_path, class: "nav-link link-dark #{admin_categories_path_class}"
