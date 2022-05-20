@@ -8,12 +8,6 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     sign_in(admin)
   end
 
-  def sign_in_as_regular_user
-    sign_out
-    user = users(:regular_user)
-    sign_in(user)
-  end
-
   test 'regular user cannot access /admin' do
     sign_in_as_regular_user
     get admin_root_url

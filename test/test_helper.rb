@@ -43,4 +43,10 @@ class ActionDispatch::IntegrationTest
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
   end
+
+  def sign_in_as_regular_user
+    sign_out
+    user = users(:regular_user)
+    sign_in(user)
+  end
 end
