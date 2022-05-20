@@ -5,7 +5,7 @@ class Web::ProfileController < ApplicationController
 
   def show
     authorize :bulletin, :profile?
-    @q = Bulletin.ransack(params[:q])
-    @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
+    @q = current_user.bulletins.ransack(params[:q])
+    @bulletins = @q.result.order(created_at: :desc).page(params[:page])
   end
 end
