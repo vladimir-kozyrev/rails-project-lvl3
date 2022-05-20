@@ -3,6 +3,11 @@
 require 'test_helper'
 
 class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
+  def setup
+    @user = users(:regular_user)
+    sign_in(@user)
+  end
+
   test 'should get index' do
     get bulletins_url
     assert_response :success
@@ -15,21 +20,18 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not show unpublished bulletins' do
+    sign_out
     bulletin = bulletins(:draft)
     get bulletin_url(bulletin)
     assert_response :redirect
   end
 
   test 'should get new' do
-    user = users(:regular_user)
-    sign_in(user)
     get new_bulletin_url
     assert_response :success
   end
 
   test 'should create bulletin' do
-    user = users(:regular_user)
-    sign_in(user)
     category = categories(:work)
     bulletin_title = Faker::Lorem.sentence
     bulletin_description = Faker::Lorem.paragraphs.join("\n")
@@ -37,7 +39,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
       title: bulletin_title,
       description: bulletin_description,
       category_id: category.id,
-      user_id: user.id,
+      user_id: @user.id,
       image: fixture_file_upload(Rails.root.join('public/images/bananas.jpeg'), 'image/jpeg')
     }
     post bulletins_url, params: { bulletin: attrs }
@@ -46,16 +48,12 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get edit' do
-    user = users(:regular_user)
-    sign_in(user)
     bulletin = bulletins(:draft)
     get edit_bulletin_url(bulletin)
     assert_response :success
   end
 
   test 'should update bulletin' do
-    user = users(:regular_user)
-    sign_in(user)
     bulletin = bulletins(:draft)
     new_bulletin_title = Faker::Lorem.sentence
     attrs = {
@@ -70,8 +68,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'to_moderate changes state to under_moderation' do
-    user = users(:regular_user)
-    sign_in(user)
     bulletin = bulletins(:draft)
     assert bulletin.draft?
     patch to_moderate_bulletin_url(bulletin)
@@ -80,8 +76,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'archive changes state to archived' do
-    user = users(:regular_user)
-    sign_in(user)
     bulletin = bulletins(:draft)
     assert_not bulletin.archived?
     patch archive_bulletin_url(bulletin)

@@ -3,6 +3,11 @@
 require 'test_helper'
 
 class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
+  def setup
+    admin = users(:admin)
+    sign_in(admin)
+  end
+
   test 'regular user cannot access admin bulletins endpoints' do
     user = users(:regular_user)
     sign_in(user)
@@ -16,22 +21,16 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get bulletins under moderation' do
-    admin = users(:admin)
-    sign_in(admin)
     get admin_root_url
     assert_response :success
   end
 
   test 'should get all bulletins' do
-    admin = users(:admin)
-    sign_in(admin)
     get admin_bulletins_url
     assert_response :success
   end
 
   test 'publish changes state to published' do
-    admin = users(:admin)
-    sign_in(admin)
     bulletin = bulletins(:under_moderation)
     assert bulletin.under_moderation?
     patch publish_admin_bulletin_url(bulletin)
@@ -40,8 +39,6 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'reject changes state to rejected' do
-    admin = users(:admin)
-    sign_in(admin)
     bulletin = bulletins(:under_moderation)
     assert bulletin.under_moderation?
     patch reject_admin_bulletin_url(bulletin)
@@ -50,8 +47,6 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'archive changes state to archived' do
-    admin = users(:admin)
-    sign_in(admin)
     bulletin = bulletins(:under_moderation)
     assert bulletin.under_moderation?
     patch archive_admin_bulletin_url(bulletin)
