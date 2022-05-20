@@ -17,10 +17,6 @@ class BulletinPolicy < ApplicationPolicy
     author?
   end
 
-  def profile?
-    user
-  end
-
   def to_moderate?
     author?
   end

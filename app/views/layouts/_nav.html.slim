@@ -2,10 +2,9 @@ nav.p-2.bg-dark.text-white
   .container.d-flex.flex-wrap
     = link_to t('.bulletin_board'), root_path, class: 'text-white navbar-brand'
     ul.nav.me-auto
-      - if policy(:bulletin).new?
+      - if signed_in?
         li.nav-item
           = link_to t('web.bulletins.add_bulletin'), new_bulletin_path, class: 'text-white nav-link'
-      - if policy(:bulletin).profile?
         li.nav-item
           = link_to t('web.bulletins.my_bulletins'), profile_path, class: 'text-white nav-link'
     ul.nav
