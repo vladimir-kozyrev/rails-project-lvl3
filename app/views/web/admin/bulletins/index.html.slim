@@ -4,13 +4,13 @@
     .h2
        = t('.bulletins')
 
-    = render 'search_form', url: admin_bulletins_path
+    = render 'search_form', q: @q, url: admin_bulletins_path
 
     table.table.table-borderless
       thead
         tr
           th = t('name')
-          th = t('.state')
+          th = t('state')
           th = t('actions')
       tbody
         - @bulletins.each do |bulletin|

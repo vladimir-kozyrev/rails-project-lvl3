@@ -3,7 +3,7 @@ h1.mt-4
 hr
 = link_to t('web.bulletins.add_bulletin'), new_bulletin_path
 .row.mt-2
-  = render 'web/bulletins/search_form', url: profile_path
+  = render 'web/bulletins/search_form', q: @q, url: profile_path
 
   table.table.table-borderless
     thead

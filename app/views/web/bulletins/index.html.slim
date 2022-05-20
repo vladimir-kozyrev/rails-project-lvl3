@@ -2,7 +2,7 @@ h1.my-4
   = t('.bulletins')
 hr
 
-= render 'search_form', url: bulletins_path
+= render 'search_form', q: @q, url: bulletins_path
 
 ul.list-group.list-group-flush
   - @bulletins.each do |bulletin|
