@@ -27,7 +27,7 @@ module Web
       if @bulletin.save
         redirect_to profile_path, notice: t('.success')
       else
-        render :new, alert: t('.failure')
+        render :new, alert: t('.failure'), status: :unprocessable_entity
       end
     end
 
@@ -42,7 +42,7 @@ module Web
       if @bulletin.update(bulletin_params)
         redirect_to profile_path, notice: t('.success')
       else
-        render :edit, status: :bad_request
+        render :edit, alert: t('.failure'), status: :unprocessable_entity
       end
     end
 

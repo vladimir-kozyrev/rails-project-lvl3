@@ -12,6 +12,7 @@ en:
         failure: 'Failed to create the bulletin'
       update:
         success: 'Bulletin was successfully updated.'
+        failure: 'Could not update the bulletin'
       search_form:
         search_bulletin_title: 'Search bulletin title'
         choose_category: 'Choose category'
