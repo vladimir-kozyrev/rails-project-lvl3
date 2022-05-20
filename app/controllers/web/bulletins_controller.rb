@@ -2,8 +2,11 @@
 
 module Web
   class BulletinsController < ApplicationController
+    before_action :verify_signed_in, only: %i[
+      new create
+    ]
     after_action :verify_authorized, only: %i[
-      show new create edit update to_moderate archive
+      show edit update to_moderate archive
     ]
 
     def index
@@ -17,13 +20,11 @@ module Web
     end
 
     def new
-      authorize :bulletin
       @bulletin = current_user.bulletins.build
     end
 
     def create
       @bulletin = current_user.bulletins.build(bulletin_params)
-      authorize @bulletin
       if @bulletin.save
         redirect_to profile_path, notice: t('.success')
       else
