@@ -8,9 +8,9 @@ hr
   table.table.table-borderless
     thead
       tr
-        th = 'Name'
-        th = 'State'
-        th = 'Actions'
+        th = t('name')
+        th = t('state')
+        th = t('actions')
     tbody
       - @bulletins.each do |bulletin|
         tr

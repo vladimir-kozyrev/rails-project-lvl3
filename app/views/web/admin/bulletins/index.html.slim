@@ -19,7 +19,7 @@
             td = bulletin.state
             td
               = link_to t('show'), bulletin_path(bulletin), class: 'me-2'
-              - unless bulletin.archived?
+              - if bulletin.may_archive?
                 = link_to t('.archive'), archive_admin_bulletin_path(bulletin), method: :patch,
                                                                       class: 'me-2 text-danger',
                                                                       data: { confirm: t('web.admin.confirmation') }
