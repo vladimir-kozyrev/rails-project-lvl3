@@ -61,7 +61,7 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     attrs = { name: new_category_name }
     put admin_category_url(category), params: { category: attrs }
     assert_response :redirect
-    assert { Category.find_by(id: category.id) }
+    assert { Category.find_by(name: new_category_name) }
   end
 
   test 'should destroy unused category' do
