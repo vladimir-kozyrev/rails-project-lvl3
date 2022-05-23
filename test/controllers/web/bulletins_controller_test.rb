@@ -44,7 +44,8 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     }
     post bulletins_url, params: { bulletin: attrs }
     assert_response :redirect
-    assert { Bulletin.find_by(title: bulletin_title) }
+    attrs.delete(:image)
+    assert { Bulletin.find_by(attrs) }
   end
 
   test 'should get edit' do
@@ -64,7 +65,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     }
     put bulletin_url(bulletin), params: { bulletin: attrs }
     assert_response :redirect
-    assert { Bulletin.find_by(title: new_bulletin_title) }
+    assert { Bulletin.find_by(attrs) }
   end
 
   test 'to_moderate changes state to under_moderation' do
