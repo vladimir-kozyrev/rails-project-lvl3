@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :admin, inclusion: [true, false]
-  has_many :bulletins
+  has_many :bulletins, dependent: :destroy
 
   def self.find_or_create_from_auth(auth)
     user = User.find_or_create_by(email: auth['info']['email'])
