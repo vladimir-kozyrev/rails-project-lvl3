@@ -67,7 +67,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'to_moderate changes state to under_moderation' do
     bulletin = bulletins(:draft)
-    assert bulletin.draft?
     patch to_moderate_bulletin_url(bulletin)
     assert_response :redirect
     assert { bulletin.reload.under_moderation? }
@@ -75,7 +74,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'archive changes state to archived' do
     bulletin = bulletins(:draft)
-    assert_not bulletin.archived?
     patch archive_bulletin_url(bulletin)
     assert_response :redirect
     assert { bulletin.reload.archived? }
