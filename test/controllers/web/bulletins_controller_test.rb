@@ -59,13 +59,10 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     new_bulletin_title = Faker::Lorem.sentence
     attrs = {
       title: new_bulletin_title,
-      description: bulletin.description,
-      category_id: bulletin.category_id,
-      user_id: bulletin.user_id
     }
     put bulletin_url(bulletin), params: { bulletin: attrs }
     assert_response :redirect
-    assert { Bulletin.find_by(attrs) }
+    assert { bulletin.reload.title == new_bulletin_title }
   end
 
   test 'to_moderate changes state to under_moderation' do
