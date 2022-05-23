@@ -72,7 +72,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert bulletin.draft?
     patch to_moderate_bulletin_url(bulletin)
     assert_response :redirect
-    assert { Bulletin.where(id: bulletin.id).first.under_moderation? }
+    assert { bulletin.reload.under_moderation? }
   end
 
   test 'archive changes state to archived' do
@@ -80,6 +80,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_not bulletin.archived?
     patch archive_bulletin_url(bulletin)
     assert_response :redirect
-    assert { Bulletin.where(id: bulletin.id).first.archived? }
+    assert { bulletin.reload.archived? }
   end
 end

@@ -56,7 +56,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert bulletin.under_moderation?
     patch publish_admin_bulletin_url(bulletin)
     assert_response :redirect
-    assert { Bulletin.where(id: bulletin.id).first.published? }
+    assert { bulletin.reload.published? }
   end
 
   test 'reject changes state to rejected' do
@@ -64,7 +64,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert bulletin.under_moderation?
     patch reject_admin_bulletin_url(bulletin)
     assert_response :redirect
-    assert { Bulletin.where(id: bulletin.id).first.rejected? }
+    assert { bulletin.reload.rejected? }
   end
 
   test 'archive changes state to archived' do
@@ -72,6 +72,6 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert bulletin.under_moderation?
     patch archive_admin_bulletin_url(bulletin)
     assert_response :redirect
-    assert { Bulletin.where(id: bulletin.id).first.archived? }
+    assert { bulletin.reload.archived? }
   end
 end
