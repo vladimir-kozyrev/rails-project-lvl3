@@ -20,7 +20,7 @@ user = User.create(
 end
 
 100.times do
-  image = File.open('public/images/bananas.jpeg')
+  image = File.open('test/fixtures/files/bananas.jpeg')
   Bulletin.create(
     title: Faker::Emotion.unique.noun,
     description: Faker::Lorem.unique.paragraph,
