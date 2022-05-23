@@ -58,7 +58,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     bulletin = bulletins(:draft)
     new_bulletin_title = Faker::Lorem.sentence
     attrs = {
-      title: new_bulletin_title,
+      title: new_bulletin_title
     }
     put bulletin_url(bulletin), params: { bulletin: attrs }
     assert_response :redirect
