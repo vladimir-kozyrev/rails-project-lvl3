@@ -7,3 +7,4 @@ en:
         success: 'Signed in!'
         failure: 'Could not sign in'
       not_authorized: 'You are not authorized to perform this action'
+      not_signed_in: 'You must be signed in to access this page'
