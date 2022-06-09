@@ -1,5 +1,5 @@
 .col-md-3
   .nav.flex-column.nav-pills
-    = link_to t('.bulletins_on_moderation'), admin_root_path, class: "nav-link link-dark #{admin_root_path_class}"
-    = link_to t('.all_bulletins'), admin_bulletins_path, class: "nav-link link-dark #{admin_bulletins_path_class}"
-    = link_to t('.all_categories'), admin_categories_path, class: "nav-link link-dark #{admin_categories_path_class}"
+    = link_to t('.bulletins_on_moderation'), admin_root_path, class: admin_nav_link_classes(admin_root_path)
+    = link_to t('.all_bulletins'), admin_bulletins_path, class: admin_nav_link_classes(admin_bulletins_path)
+    = link_to t('.all_categories'), admin_categories_path, class: admin_nav_link_classes(admin_categories_path)
