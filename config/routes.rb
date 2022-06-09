@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       end
     end
 
-    get 'profile', to: 'profile#show', as: :profile
+    resource :profile, only: :show
 
     scope 'admin', module: :admin, as: :admin do
       root 'bulletins#moderate'
