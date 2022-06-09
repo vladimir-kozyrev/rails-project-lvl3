@@ -3,6 +3,12 @@ en:
     bulletins:
       add_bulletin: 'Add bulletin'
       my_bulletins: 'My bulletins'
+      states:
+        draft: 'draft'
+        under_moderation: 'under_moderation'
+        published: 'published'
+        rejected: 'rejected'
+        archived: 'archived'
       index:
         bulletins: 'Bulletins'
       show:
