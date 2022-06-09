@@ -34,3 +34,4 @@ en:
       q:
         category_id_eq: Choose category
         title_cont: Search bulletin title
+        state_eq: Choose bulletin state
