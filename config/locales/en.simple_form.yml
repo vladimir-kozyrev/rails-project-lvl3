@@ -32,6 +32,5 @@ en:
     reset: 'Reset'
     hints:
       q:
-        index:
-          category_id_eq: Choose category
-          title_cont: Search bulletin title
+        category_id_eq: Choose category
+        title_cont: Search bulletin title
