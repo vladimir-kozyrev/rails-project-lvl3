@@ -29,6 +29,7 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+    reset: 'Reset'
     hints:
       q:
         index:
