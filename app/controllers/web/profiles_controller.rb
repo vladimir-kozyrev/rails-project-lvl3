@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Web::ProfileController < ApplicationController
+class Web::ProfilesController < ApplicationController
   before_action :verify_signed_in
 
   def show
