@@ -8,9 +8,9 @@ class Bulletin < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :image, presence: true,
-                    file_size: { less_than_or_equal_to: 5.megabytes },
-                    file_content_type: { allow: ['image/jpeg', 'image/png'] }
+  validates :image, attached: true,
+                    content_type: %i[png jpg jpeg],
+                    size: { less_than_or_equal_to: 5.megabytes }
   has_one_attached :image
 
   aasm column: 'state' do
