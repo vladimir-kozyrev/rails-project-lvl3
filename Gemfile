@@ -68,7 +68,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'aasm'
 gem 'active_storage_validations'
-gem 'file_validators'
 gem 'image_processing'
 gem 'kaminari'
 gem 'omniauth-github'
