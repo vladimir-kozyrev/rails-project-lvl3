@@ -8,8 +8,7 @@ hr
   - @bulletins.each do |bulletin|
     .col-3.pt-2
       .card.shadow-sm
-        = image_tag bulletin.image.variant(resize_to_limit: [200, 100]),
-          class: 'card-img-top x-object-fit-cover'
+        = image_tag bulletin.image, height: '200', class: 'card-img-top x-object-fit-cover'
         .card-body
           = link_to(bulletin_path(bulletin)) do
             h5.card-title
