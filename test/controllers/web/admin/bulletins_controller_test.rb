@@ -8,12 +8,6 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     sign_in(admin)
   end
 
-  test 'regular user cannot access /admin' do
-    sign_in_as_regular_user
-    get admin_root_url
-    assert_response :redirect
-  end
-
   test 'regular user cannot access /admin/bulletins' do
     sign_in_as_regular_user
     get admin_bulletins_url
@@ -39,11 +33,6 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     bulletin = bulletins(:under_moderation)
     patch archive_admin_bulletin_url(bulletin)
     assert_response :redirect
-  end
-
-  test 'should get bulletins under moderation' do
-    get admin_root_url
-    assert_response :success
   end
 
   test 'should get all bulletins' do

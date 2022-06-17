@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resource :profile, only: :show
 
     scope 'admin', module: :admin, as: :admin do
-      root 'bulletins#moderate'
+      root 'home#index'
       resources :bulletins, only: :index do
         member do
           patch 'publish'
