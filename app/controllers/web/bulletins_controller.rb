@@ -2,8 +2,8 @@
 
 module Web
   class BulletinsController < ApplicationController
-    before_action :verify_signed_in, only: %i[
-      new create
+    before_action :verify_signed_in, except: %i[
+      index show
     ]
     after_action :verify_authorized, only: %i[
       show edit update to_moderate archive
