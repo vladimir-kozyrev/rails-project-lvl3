@@ -8,45 +8,6 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     sign_in(user)
   end
 
-  test 'regular user cannot access categories index' do
-    sign_in_as_regular_user
-    get admin_categories_url
-    assert_response :redirect
-  end
-
-  test 'regular user cannot access categories new' do
-    sign_in_as_regular_user
-    get new_admin_category_url
-    assert_response :redirect
-  end
-
-  test 'regular user cannot create category' do
-    sign_in_as_regular_user
-    post admin_categories_url, params: { category: { name: Faker::Lorem.sentence } }
-    assert_response :redirect
-  end
-
-  test 'regular user cannot edit category' do
-    sign_in_as_regular_user
-    category = categories(:work)
-    get edit_admin_category_url(category)
-    assert_response :redirect
-  end
-
-  test 'regular user cannot update category' do
-    sign_in_as_regular_user
-    category = categories(:work)
-    patch admin_category_url(category), params: { category: { name: Faker::Lorem.sentence } }
-    assert_response :redirect
-  end
-
-  test 'regular user cannot delete category' do
-    sign_in_as_regular_user
-    category = categories(:work)
-    delete admin_category_url(category)
-    assert_response :redirect
-  end
-
   test 'should get index' do
     get admin_categories_url
     assert_response :success

@@ -11,7 +11,7 @@ class Web::Admin::HomeControllerTest < ActionDispatch::IntegrationTest
   test 'regular user cannot access /admin' do
     sign_in_as_regular_user
     get admin_root_url
-    assert_response :redirect
+    assert_response :redirect, message: 'You are not authorized to perform this action'
   end
 
   test 'should get bulletins under moderation' do
