@@ -34,6 +34,12 @@ en:
         all_bulletins: 'All bulletins'
         all_categories: 'All categories'
         bulletins_on_moderation: 'Bulletins on moderation'
+      home:
+        index:
+          publish: 'Publish'
+          reject: 'Reject'
+          archive: 'Archive'
+          bulletins_on_moderation: 'Bulletins on moderation'
       bulletins:
         search_form:
           search_bulletin_title: 'Search bulletin title'
@@ -42,11 +48,6 @@ en:
           bulletins: 'Bulletins'
           archive: 'Archive'
           state: 'State'
-        moderate:
-          approve: 'Approve'
-          reject: 'Reject'
-          archive: 'Archive'
-          bulletins_on_moderation: 'Bulletins on moderation'
         publish:
           success: 'The bulletin has been published'
           failure: 'Could not publish the bulletin'
