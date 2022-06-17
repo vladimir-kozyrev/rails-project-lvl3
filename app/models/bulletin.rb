@@ -33,7 +33,9 @@ class Bulletin < ApplicationRecord
     end
 
     event :archive do
-      transitions to: :archived
+      transitions from: %i[
+        draft under_moderation published rejected
+      ], to: :archived
     end
   end
 end
