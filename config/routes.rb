@@ -29,5 +29,4 @@ Rails.application.routes.draw do
       resources :categories, only: %i[index new create edit update destroy]
     end
   end
-  resolve('Profile') { [:profile] }
 end
