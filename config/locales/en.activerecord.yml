@@ -1,0 +1,8 @@
+activerecord:
+  attributes:
+    bulletin:
+      state/draft: 'Draft'
+      state/under_moderation: 'Under moderation'
+      state/published: 'Published'
+      state/rejected: 'Rejected'
+      state/archived: 'Archived'
